@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://bodies/player_ball/PlayerBall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
+[ext_resource path="res://bodies/ball/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/Peace Sans.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 4 )
+
+[node name="Game" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+Ball = ExtResource( 3 )
+
+[node name="PlayerBall" parent="." instance=ExtResource( 1 )]
+position = Vector2( 360, 640 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.992157, 0.992157, 0.972549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Max" type="Label" parent="CanvasLayer"]
+margin_top = 95.0
+margin_right = 720.0
+margin_bottom = 1280.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.854902, 0.490196, 0.133333, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Max: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 240.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.901961, 0.854902, 0.160784, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "The Ball
+GAME"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Press" type="Button" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 660.0
+margin_bottom = -344.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.176471, 0.576471, 0.866667, 1 )
+text = "Press to play"
+flat = true
+
+[node name="Ups" type="Button" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -180.0
+margin_right = 360.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.827451, 0.152941, 0.203922, 1 )
+text = "Play again?"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CanvasLayer/Ups"]
+margin_right = 720.0
+margin_bottom = 155.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.827451, 0.152941, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Ups!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

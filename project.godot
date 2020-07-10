@@ -18,11 +18,33 @@ _global_script_class_icons={
 config/name="Godot-template"
 config/description="Godot Template 3.2.2
 https://github.com/DeybisMelendez/godot-template"
+run/main_scene="res://scenes/game/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://global.gd"
+
+[display]
+
+window/size/width=720
+window/size/height=1280
+window/size/test_width=288
+window/size/test_height=512
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+clic={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.105882, 0.109804, 0.2, 1 )
 environment/default_environment="res://default_env.tres"
