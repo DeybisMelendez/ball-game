@@ -7,6 +7,7 @@ func _ready():
 	$CanvasLayer/Press.connect("button_up",self,"start_game")
 	$CanvasLayer/Ups.connect("button_up",self,"restart")
 	$CanvasLayer/Max.text = "Max:" + str(Global.max_record)
+	$CanvasLayer/Leaderboard.connect("button_up", self, "leaderboard")
 func start_game():
 	$PlayerBall.can_move = true
 	$CanvasLayer/Title.hide()
@@ -38,3 +39,5 @@ func instance_ball(add_score):
 		score += 1
 		$CanvasLayer/Score.text = str(score)
 
+func leaderboard():
+	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")
