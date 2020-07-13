@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Ads="*res://ads.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Global="*res://global.gd"
 

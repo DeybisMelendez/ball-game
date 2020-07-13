@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pickup.wav-16d5f63ed8ae4bafeac37a147a05eea9.sample"
+
+[deps]
+
+source_file="res://bodies/player_ball/pickup.wav"
+dest_files=[ "res://.import/pickup.wav-16d5f63ed8ae4bafeac37a147a05eea9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -28,5 +28,6 @@ func ball_entered(ball):
 			ball.is_killed = true
 			ball.queue_free()
 			get_parent().instance_ball(true)
+			$AudioStreamPlayer.play()
 		else:
 			get_parent().end()
