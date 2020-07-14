@@ -2,15 +2,12 @@ extends Node2D
 
 export (PackedScene) var Ball
 var score = 0
-var is_android = OS.get_name() == "Android"
 func _ready():
 	$CanvasLayer/Press.connect("button_up",self,"start_game")
 	$CanvasLayer/Ups.connect("button_up",self,"restart")
 	$CanvasLayer/Max.text = "Max:" + str(Global.max_record)
 	$CanvasLayer/Leaderboard.connect("button_up", self, "leaderboard")
 	randomize()
-	if is_android:
-		Ads.Mopub.show_banner_ad(true)
 
 func start_game():
 	$PlayerBall.can_move = true
@@ -23,10 +20,8 @@ func start_game():
 		instance_ball(false)
 
 func restart():
-	Ads.Mopub.show_interstitial_ad()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
 
 func end():
 	get_tree().paused = true
@@ -44,7 +39,7 @@ func end():
 func instance_ball(add_score):
 	var new = Ball.instance()
 	new.scale_size = $PlayerBall.scale_size * rand_range(0.2,1.5)
-	new.position = Vector2((randf() *2 -1)*720, (randf() *2 -1)*1280)
+	new.position = Vector2((randi()%2)*720, (randi()%2)*1280)
 	call_deferred("add_child", new)
 	if add_score:
 		score += 1

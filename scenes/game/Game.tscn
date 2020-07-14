@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://bodies/player_ball/PlayerBall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
@@ -6,21 +6,24 @@
 [ext_resource path="res://fonts/Peace Sans.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://scenes/game/Explosion.wav" type="AudioStream" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 360, 640 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 72
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 100
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 48
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -41,6 +44,12 @@ pause_mode = 2
 script = ExtResource( 2 )
 Ball = ExtResource( 3 )
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource( 1 )
+passby_press = true
+action = "clic"
+visibility_mode = 1
+
 [node name="PlayerBall" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 640 )
 
@@ -52,7 +61,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 85.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.992157, 0.992157, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
@@ -66,7 +75,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -16.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.854902, 0.490196, 0.133333, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
@@ -83,7 +92,7 @@ margin_top = 240.0
 margin_right = 6.10352e-05
 margin_bottom = -740.0
 rect_pivot_offset = Vector2( 360, 150 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.901961, 0.854902, 0.160784, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 8
@@ -102,7 +111,7 @@ anchor_bottom = 1.0
 margin_top = 660.0
 margin_bottom = -451.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.176471, 0.576471, 0.866667, 1 )
 enabled_focus_mode = 0
 keep_pressed_outside = true
@@ -113,7 +122,7 @@ flat = true
 margin_top = 828.0
 margin_right = 720.0
 margin_bottom = 983.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.156863, 0.776471, 0.254902, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
@@ -135,7 +144,7 @@ margin_top = -180.0
 margin_right = 360.0
 margin_bottom = 180.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.827451, 0.152941, 0.203922, 1 )
 enabled_focus_mode = 0
 text = "Play again?"
@@ -147,7 +156,7 @@ __meta__ = {
 [node name="Title2" type="Label" parent="CanvasLayer/Ups"]
 margin_right = 720.0
 margin_bottom = 155.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.827451, 0.152941, 0.203922, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
@@ -162,7 +171,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 1005.0
 focus_mode = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.482353, 0.32549, 0.678431, 1 )
 enabled_focus_mode = 0
 text = "Leaderboard"
@@ -173,7 +182,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 autoplay = "Nueva Animación"
-"anims/Nueva Animación" = SubResource( 4 )
+"anims/Nueva Animación" = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource( 5 )

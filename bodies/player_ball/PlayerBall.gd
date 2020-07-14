@@ -3,18 +3,27 @@ extends Area2D
 const RADIUS = 256
 var scale_size = 0.04
 var can_move = false
+var is_pressed = false
 var pos
 
 func _ready():
 	connect("area_entered", self, "ball_entered")
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouse:
 		if can_move:
-			if pos == null:
-				pos = event.get_position() - global_position
-			else:
-				global_position = event.get_position() - pos
+			if is_pressed:
+				if pos == null:
+					pos = event.get_position() - global_position
+				else:
+					global_position = event.get_position() - pos
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("clic"):
+		is_pressed = true
+	elif Input.is_action_just_released("clic"):
+		is_pressed = false
+		pos = null
 
 func level_up(points):
 	scale_size += points
