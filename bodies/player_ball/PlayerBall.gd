@@ -8,6 +8,7 @@ var pos
 
 func _ready():
 	connect("area_entered", self, "ball_entered")
+	level_up(0) #reseteamos el shape en caso de multiples partidas
 
 func _input(event):
 	if event is InputEventMouse:
@@ -24,6 +25,15 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("clic"):
 		is_pressed = false
 		pos = null
+	var size = RADIUS*scale_size
+	if global_position.x < 0:
+		global_position.x = 0
+	elif global_position.x > 720:
+		global_position.x = 720
+	if global_position.y < 0:
+		global_position.y = 0
+	elif global_position.y > 1280:
+		global_position.y = 1280
 
 func level_up(points):
 	scale_size += points
