@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot-template"
+config/name="Ball-Game"
 config/description="Godot Template 3.2.2
 https://github.com/DeybisMelendez/godot-template"
 run/main_scene="res://scenes/game/Game.tscn"

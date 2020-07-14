@@ -1,5 +1,7 @@
 extends Control
 
+onready var is_html = OS.get_name()=="HTML5"
+
 func _ready():
 	$Label2.connect("button_up",self,"restart")
 	$Label.text += str(Global.max_record)
