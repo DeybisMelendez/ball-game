@@ -15,6 +15,7 @@ onready var Audio = $Main/Audio
 onready var Nick = $Main/MainMenu/Nick
 
 var score = 0
+var ended = false
 func _ready():
 	Press.connect("button_up",self,"start_game")
 	LoseMenu.get_node("PlayAgain").connect("button_up",self,"restart")
@@ -41,17 +42,19 @@ func restart():
 	get_tree().reload_current_scene()
 
 func end():
-	get_tree().paused = true
-	if Global.max_record < score:
-		Global.max_record = score
-		Global.save_data(Global.max_record, "record.dat")
-		get_tree().paused = false
-		Audio.play()
-		yield(Audio,"finished")
-		get_tree().change_scene("res://scenes/new_record/NewRecord.tscn")
-	else:
-		Audio.play()
-		LoseMenu.show()
+	if not ended:
+		get_tree().paused = true
+		if Global.max_record < score:
+			Global.max_record = score
+			Global.save_data(Global.max_record, "record.dat")
+			get_tree().paused = false
+			Audio.play()
+			yield(Audio,"finished")
+			get_tree().change_scene("res://scenes/new_record/NewRecord.tscn")
+		else:
+			Audio.play()
+			LoseMenu.show()
+		ended = true
 
 func instance_ball(add_score):
 	var new = Ball.instance()
