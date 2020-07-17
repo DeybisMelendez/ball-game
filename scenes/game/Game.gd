@@ -4,6 +4,7 @@ export (PackedScene) var Ball
 
 onready var Press = $Main/MainMenu/Press
 onready var LoseMenu = $Main/LoseMenu
+onready var MainMenu = $Main/MainMenu
 onready var Max = $Main/Max
 onready var Leaderboard = $Main/MainMenu/Leaderboard
 onready var PlayerBall = $PlayerBall
@@ -11,6 +12,7 @@ onready var Title = $Main/MainMenu/Title
 onready var Desc = $Main/MainMenu/Desc
 onready var Score = $Main/Score
 onready var Audio = $Main/Audio
+onready var Nick = $Main/MainMenu/Nick
 
 var score = 0
 func _ready():
@@ -18,15 +20,19 @@ func _ready():
 	LoseMenu.get_node("PlayAgain").connect("button_up",self,"restart")
 	Max.text = "Max:" + str(Global.max_record)
 	Leaderboard.connect("button_up", self, "leaderboard")
+	if Global.nickname != "":
+		Nick.text = Global.nickname
 	randomize()
 
 func start_game():
 	PlayerBall.can_move = true
-	Title.hide()
-	Press.hide()
-	Leaderboard.hide()
-	Desc.hide()
+	MainMenu.hide()
 	Score.show()
+	if Nick.text == "":
+		Global.nickname = "Anonymous"
+	else:
+		Global.nickname = Nick.text
+		Global.save_data(Nick.text, "nick.dat")
 	for i in 24:
 		instance_ball(false)
 
@@ -38,7 +44,7 @@ func end():
 	get_tree().paused = true
 	if Global.max_record < score:
 		Global.max_record = score
-		Global.save_data(Global.max_record, "data.dat")
+		Global.save_data(Global.max_record, "record.dat")
 		get_tree().paused = false
 		Audio.play()
 		yield(Audio,"finished")

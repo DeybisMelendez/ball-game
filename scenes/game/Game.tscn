@@ -1,34 +1,29 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://bodies/player_ball/PlayerBall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
 [ext_resource path="res://bodies/ball/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/Peace Sans.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://scenes/game/Explosion.wav" type="AudioStream" id=5]
-[ext_resource path="res://scenes/game/button_style.tres" type="StyleBox" id=7]
-[ext_resource path="res://scenes/game/button_font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://styles/LineEdit.tres" type="StyleBox" id=6]
+[ext_resource path="res://styles/button_style.tres" type="StyleBox" id=7]
+[ext_resource path="res://styles/button_font.tres" type="DynamicFont" id=8]
+[ext_resource path="res://styles/Title_style.tres" type="DynamicFont" id=9]
+[ext_resource path="res://styles/text_style.tres" type="DynamicFont" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 360, 640 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 72
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 100
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=5]
-length = 2.0
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=6]
+length = 4.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("MainMenu/Title:rect_scale")
@@ -37,10 +32,38 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 2, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainMenu/Desc:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Eat smaller balls.", "Avoid bigger balls." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainMenu/Desc:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 4, 5, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -56,7 +79,7 @@ action = "clic"
 visibility_mode = 1
 
 [node name="PlayerBall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 360, 464 )
+position = Vector2( 360, 696 )
 
 [node name="Main" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -66,10 +89,9 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 85.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.992157, 0.992157, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 4
 text = "0"
 align = 1
 __meta__ = {
@@ -80,10 +102,8 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -16.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 0.854902, 0.490196, 0.133333, 1 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = 4
 text = "Max: 0"
 align = 2
 __meta__ = {
@@ -93,18 +113,18 @@ __meta__ = {
 [node name="MainMenu" type="VBoxContainer" parent="Main"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 100
+custom_constants/separation = 60
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="Main/MainMenu"]
-margin_top = 179.0
+margin_top = 230.0
 margin_right = 720.0
-margin_bottom = 460.0
-rect_pivot_offset = Vector2( 360, 150 )
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 471.0
+rect_pivot_offset = Vector2( 360, 120 )
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.901961, 0.854902, 0.160784, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 8
@@ -117,11 +137,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Desc" type="Label" parent="Main/MainMenu"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 531.0
+margin_right = 720.0
+margin_bottom = 599.0
+rect_min_size = Vector2( 720, 68 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.156863, 0.776471, 0.254902, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+text = "Eat smaller balls."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nick" type="LineEdit" parent="Main/MainMenu"]
+margin_left = 60.0
+margin_top = 659.0
+margin_right = 660.0
+margin_bottom = 727.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 4
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 5 )
+align = 1
+max_length = 16
+placeholder_text = "NickName"
+caret_blink = true
+
 [node name="Press" type="Button" parent="Main/MainMenu"]
 margin_left = 123.0
-margin_top = 560.0
+margin_top = 787.0
 margin_right = 596.0
-margin_bottom = 661.0
+margin_bottom = 888.0
 focus_mode = 0
 size_flags_horizontal = 4
 custom_styles/hover = ExtResource( 7 )
@@ -137,26 +188,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Desc" type="Label" parent="Main/MainMenu"]
-margin_top = 761.0
-margin_right = 720.0
-margin_bottom = 900.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.156863, 0.776471, 0.254902, 1 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = 4
-text = "Eat smaller balls,
-avoid bigger balls."
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Leaderboard" type="Button" parent="Main/MainMenu"]
 margin_left = 118.0
-margin_top = 1000.0
+margin_top = 948.0
 margin_right = 602.0
-margin_bottom = 1101.0
+margin_bottom = 1049.0
 focus_mode = 0
 size_flags_horizontal = 4
 custom_styles/hover = ExtResource( 7 )
@@ -175,16 +211,17 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 32
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Ups" type="Label" parent="Main/LoseMenu"]
-margin_top = 510.0
+margin_top = 514.0
 margin_right = 720.0
-margin_bottom = 649.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 633.0
+custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.827451, 0.152941, 0.203922, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
@@ -195,17 +232,18 @@ __meta__ = {
 }
 
 [node name="PlayAgain" type="Button" parent="Main/LoseMenu"]
-margin_left = 138.0
-margin_top = 653.0
-margin_right = 582.0
-margin_bottom = 770.0
+margin_left = 146.0
+margin_top = 665.0
+margin_right = 574.0
+margin_bottom = 766.0
 focus_mode = 0
 size_flags_horizontal = 4
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.854902, 0.490196, 0.133333, 1 )
+custom_colors/font_color = Color( 0.176471, 0.576471, 0.866667, 1 )
+custom_colors/font_color_pressed = Color( 0.992157, 0.992157, 0.972549, 1 )
 enabled_focus_mode = 0
 text = "Play again?"
 __meta__ = {
@@ -214,7 +252,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main"]
 autoplay = "Nueva Animación"
-"anims/Nueva Animación" = SubResource( 5 )
+"anims/Nueva Animación" = SubResource( 6 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Main"]
+autoplay = "Nueva Animación"
+"anims/Nueva Animación" = SubResource( 7 )
 
 [node name="Audio" type="AudioStreamPlayer" parent="Main"]
 stream = ExtResource( 5 )
