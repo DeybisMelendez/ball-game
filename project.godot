@@ -19,7 +19,7 @@ config/name="Ball-Game"
 config/description="Godot Template 3.2.2
 https://github.com/DeybisMelendez/godot-template"
 run/main_scene="res://scenes/game/Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://android/icon.png"
 
 [autoload]
 
