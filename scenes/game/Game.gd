@@ -43,6 +43,7 @@ func restart():
 
 func end():
 	if not ended:
+		ended = true
 		get_tree().paused = true
 		if Global.max_record < score:
 			Global.max_record = score
@@ -54,7 +55,6 @@ func end():
 		else:
 			Audio.play()
 			LoseMenu.show()
-		ended = true
 
 func instance_ball(add_score):
 	var new = Ball.instance()
