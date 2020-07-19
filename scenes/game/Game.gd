@@ -64,6 +64,7 @@ func instance_ball(add_score):
 	if add_score:
 		score += 1
 		Score.text = str(score)
+		$Main/AnimationPlayer3.play("score")
 
 func leaderboard():
 	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")

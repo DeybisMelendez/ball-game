@@ -4,7 +4,6 @@
 [ext_resource path="res://images/ball.png" type="Texture" id=2]
 [ext_resource path="res://bodies/player_ball/pickup.wav" type="AudioStream" id=3]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 13.0
 
@@ -24,4 +23,4 @@ texture = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -10.0
+volume_db = -20.0
