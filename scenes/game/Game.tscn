@@ -3,13 +3,13 @@
 [ext_resource path="res://bodies/player_ball/PlayerBall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
 [ext_resource path="res://bodies/ball/Ball.tscn" type="PackedScene" id=3]
-[ext_resource path="res://fonts/Peace Sans.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://scenes/game/Explosion.wav" type="AudioStream" id=5]
-[ext_resource path="res://styles/LineEdit.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/fonts/peace_sans.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/audio/explosion.wav" type="AudioStream" id=5]
+[ext_resource path="res://styles/line_edit_style.tres" type="StyleBox" id=6]
 [ext_resource path="res://styles/button_style.tres" type="StyleBox" id=7]
 [ext_resource path="res://styles/button_font.tres" type="DynamicFont" id=8]
-[ext_resource path="res://styles/Title_style.tres" type="DynamicFont" id=9]
-[ext_resource path="res://styles/text_style.tres" type="DynamicFont" id=10]
+[ext_resource path="res://styles/title_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://styles/text_font.tres" type="DynamicFont" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 360, 640 )

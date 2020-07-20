@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ball.png-df76523ee88f056b5d5fcd026b9bc8fb.stex"
+path="res://.import/bg.jpg-7284724c0844a5443790b54c81fbdad2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/ball.png"
-dest_files=[ "res://.import/ball.png-df76523ee88f056b5d5fcd026b9bc8fb.stex" ]
+source_file="res://assets/images/bg.jpg"
+dest_files=[ "res://.import/bg.jpg-7284724c0844a5443790b54c81fbdad2.stex" ]
 
 [params]
 
@@ -21,8 +21,8 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
-flags/anisotropic=true
+flags/mipmaps=false
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

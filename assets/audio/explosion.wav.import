@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/pickup.wav-16d5f63ed8ae4bafeac37a147a05eea9.sample"
+path="res://.import/explosion.wav-4dcccbd27187cfdac205309f792899a7.sample"
 
 [deps]
 
-source_file="res://bodies/player_ball/pickup.wav"
-dest_files=[ "res://.import/pickup.wav-16d5f63ed8ae4bafeac37a147a05eea9.sample" ]
+source_file="res://assets/audio/explosion.wav"
+dest_files=[ "res://.import/explosion.wav-4dcccbd27187cfdac205309f792899a7.sample" ]
 
 [params]
 

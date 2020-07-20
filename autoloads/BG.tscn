@@ -1,12 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://images/back.png" type="Texture" id=1]
-
+[ext_resource path="res://assets/images/bg.jpg" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 720, 1280 )

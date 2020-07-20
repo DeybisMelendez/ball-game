@@ -33,7 +33,7 @@ window/size/width=720
 window/size/height=1280
 window/size/test_width=288
 window/size/test_height=512
-window/handheld/orientation="reverse_portrait"
+window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
